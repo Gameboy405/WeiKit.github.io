@@ -8,37 +8,37 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
         #main .post.featured .major {
-            margin-top: 0; /* Reduces unnecessary spacing at the top */
-            padding-top: 1px; /* Adjust padding to fine-tune */
+            margin-top: 0;
+            padding-top: 1px;
         }
 
         #main .post.featured .major .date {
-            margin-bottom: 5px; /* Adjust spacing below the date */
-            font-size: 1rem; /* Optional: Adjust font size if needed */
+            margin-bottom: 5px;
+            font-size: 1rem;
         }
 
         #main .post.featured .major .subtitle {
-            margin-top: 5px; /* Space between the date and the subtitle */
-            font-size: 1.2rem; /* Slightly smaller font size */
-            color: #666; /* Subtle text color */
-            font-style: italic; /* Italic for distinction */
+            margin-top: 5px;
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
         }
 
         #main .post.featured .major h2 {
-            margin-top: 60px; /* Reduce spacing above the title */
-            margin-bottom: 15px; /* Adjust space below the title */
-            font-size: 5.6rem; /* Optional: Adjust title size */
+            margin-top: 60px;
+            margin-bottom: 15px;
+            font-size: 5.6rem;
         }
 
         #intro .actions {
             list-style: none;
             padding: 0;
-            display: flex; /* Enables flexbox for alignment */
-            justify-content: center; /* Centers items horizontally */
-            align-items: center; /* Centers items vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
-            bottom: 90px; /* Optional: Adjusts the distance from the bottom of the viewport */
-            width: 23%; /* Full width to allow for centering */
+            bottom: 90px;
+            width: 23%;
         }
 
         #intro .actions li {
@@ -48,33 +48,37 @@
 
         #intro {
             position: relative;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white; /* Makes text readable */
-            overflow: hidden; /* Ensures video doesn't overflow */
+            color: white;
+            overflow: hidden;
         }
 
         #intro-video {
-            position: fixed; /* Fixes the video to the background */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the video covers the entire section */
-            z-index: -1; /* Places the video behind the content */
+            object-fit: cover;
+            z-index: -1;
         }
 
         #intro .content {
-            z-index: 1; /* Places text above the video */
-            max-width: 800px; /* Optional: limits the width of the text */
-            padding: 2em; /* Adds padding for layout */
+            z-index: 1;
+            max-width: 800px;
+            padding: 2em;
         }
 
         #image-wrapper img,
-        #second-image-wrapper img {
+        #second-image-wrapper img,
+        #third-image-wrapper img,
+         #fourth-image-wrapper img,
+         #fifth-image-wrapper img
+        {
             width: 100%;
             max-width: 1200px;
             height: auto;
@@ -91,7 +95,10 @@
         }
 
         #image-wrapper,
-        #second-image-wrapper {
+        #second-image-wrapper,
+        #third-image-wrapper,
+        #fourth-image-wrapper, 
+        #fifth-image-wrapper{
             position: relative;
             display: inline-block;
             cursor: pointer;
@@ -169,7 +176,7 @@
             <article class="post featured">
                 <header class="major">
                     <span class="date">August 25, 2024</span>
-                    <div class="subtitle">Click the image to find out more  </div>
+                    <div class="subtitle">Click the image to find out more</div>
                     <h2>Master Bedroom</h2>
                 </header>
                 <div id="image-wrapper" class="image-wrapper">
@@ -178,21 +185,58 @@
                     </div>
                     <img src="images/Render 2.png" alt="All assets modelled from scratch" class="fade-image" />
                 </div>
-                <ul class="actions special"></ul>
             </article>
 
             <!-- Second Image -->
             <article class="post featured">
-                <header class="major"> 
-                    <h2>Master Bedroom</h2>
+                <header class="major">
+                    <h2>Modern Bedroom</h2>
                 </header>
                 <div id="second-image-wrapper" class="image-wrapper">
                     <div class="image-overlay">
-                        <p class="overlay-text">Went for a modern contemporary style</p>
+                        <p class="overlay-text">Another angle. Went for a modern contemporary style</p>
                     </div>
                     <img src="images/Render 3.png" alt="Description of second work" class="fade-image" />
                 </div>
-                <ul class="actions special"></ul>
+            </article>
+
+            <!-- Third Image -->
+            <article class="post featured">
+                <header class="major">
+                    <h2>First interior project</h2>
+                </header>
+                <div id="third-image-wrapper" class="image-wrapper">
+                    <div class="image-overlay">
+                        <p class="overlay-text">My first attempt at interior design </p>
+                    </div>
+                    <img src="images/First render.png" alt="Description of third work" class="fade-image" />
+                </div>
+            </article>
+
+            <!-- Fourth Image -->
+            <article class="post featured">
+                <header class="major">
+                    <h2>Hifi Setup</h2>
+                </header>
+                <div id="fourth-image-wrapper" class="image-wrapper">
+                    <div class="image-overlay">
+                        <p class="overlay-text">I have an interest in speakers and hi-fi systems, hence i made this speaker room</p>
+                    </div>
+                    <img src="images/Speaker setup.png" alt="Description of fourth work" class="fade-image" />
+                </div>
+            </article>
+
+                   <!-- Fourth Image -->
+            <article class="post featured">
+                <header class="major">
+                    <h2>Penthouse bedroom</h2>
+                </header>
+                <div id="fifth-image-wrapper" class="image-wrapper">
+                    <div class="image-overlay">
+                        <p class="overlay-text">Made a penthouse bedroom with the scenery of NYC</p>
+                    </div>
+                    <img src="images/penthouse.png" alt="Description of fifth work" class="fade-image" />
+                </div>
             </article>
         </div>
 
@@ -234,26 +278,24 @@
             imageWrappers.forEach(wrapper => {
                 const image = wrapper.querySelector('img');
 
-                // Add event listener for image click to toggle the fade effect
                 wrapper.addEventListener('click', function () {
-                    image.classList.toggle('faded'); // Toggle fade effect on image
-                    wrapper.classList.toggle('active'); // Toggle overlay visibility
+                    image.classList.toggle('faded');
+                    wrapper.classList.toggle('active');
                 });
             });
 
-            // IntersectionObserver to detect when the video is visible
             const video = document.getElementById('intro-video');
             const observer = new IntersectionObserver(function (entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        video.play(); // Play video when visible
+                        video.play();
                     } else {
-                        video.pause(); // Pause video when not visible
+                        video.pause();
                     }
                 });
-            }, { threshold: 0.5 }); // Trigger when 50% of the video is visible
+            }, { threshold: 0.5 });
 
-            observer.observe(video); // Start observing the video
+            observer.observe(video);
         });
     </script>
 
