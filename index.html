@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Massively by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        #main .post.featured .major {
+            margin-top: 0; /* Reduces unnecessary spacing at the top */
+            padding-top: 1px; /* Adjust padding to fine-tune */
+        }
+
+            #main .post.featured .major .date {
+                margin-bottom: 10px; /* Tighten spacing below the date */
+                font-size: 1rem; /* Optional: Adjust font size if needed */
+            }
+
+            #main .post.featured .major h2 {
+                margin-top: 60px; /* Reduce spacing above the title */
+                margin-bottom: 15px; /* Adjust space below the title */
+                font-size: 5.6rem; /* Optional: Adjust title size */
+            }
+
+        #intro .actions {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Enables flexbox for alignment */
+            justify-content: center; /* Centers items horizontally */
+            align-items: center; /* Centers items vertically */
+            position: absolute;
+            bottom: 90px; /* Optional: Adjusts the distance from the bottom of the viewport */
+            width: 23%; /* Full width to allow for centering */
+        }
+
+            #intro .actions li {
+                display: inline-block;
+                margin: 0;
+            }
+
+        #intro {
+            position: relative;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white; /* Makes text readable */
+            overflow: hidden; /* Ensures video doesn't overflow */
+        }
+
+        #intro-video {
+            position: fixed; /* Fixes the video to the background */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the entire section */
+            z-index: -1; /* Places the video behind the content */
+        }
+
+        #intro .content {
+            z-index: 1; /* Places text above the video */
+            max-width: 800px; /* Optional: limits the width of the text */
+            padding: 2em; /* Adds padding for layout */
+        }
+
+        #image-wrapper img,
+        #second-image-wrapper img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+            transition: opacity 2s ease;
+        }
+
+        .fade-image {
+            opacity: 1;
+        }
+
+            .fade-image.faded {
+                opacity: 0.2;
+            }
+
+        #image-wrapper,
+        #second-image-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .image-wrapper.active .image-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .overlay-text {
+            font-size: 1.5em;
+            text-align: center;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro Section -->
+        <div id="intro">
+            <video autoplay muted loop id="intro-video">
+                <source src="assets/videos/1236.mp4" type="video/mp4">
+                <source src="assets/videos/background.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="content">
+                <h1>This is<br />Wei Kit</h1>
+                <p>My portfolio</p>
+                <ul class="actions">
+                    <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <header id="header">
+            <a href="index.html" class="logo">Home</a>
+        </header>
+
+        <nav id="nav">
+            <ul class="links">
+                <li class="active"><a href="index.html">My Works</a></li>
+                <li><a href="generic.html">Generic Page</a></li>
+                <li><a href="elements.html">Elements Reference</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <!-- First Image -->
+            <article class="post featured">
+                <header class="major">
+                    <span class="date">August 25, 2024</span>
+                    <h2>Master Bedroom</h2>
+                </header>
+                <div id="image-wrapper" class="image-wrapper">
+                    <div class="image-overlay">
+                        <p class="overlay-text">First attempt at making a bedroom with assets made from scratch</p>
+                    </div>
+                    <img src="images/Render 2.png" alt="All assets modelled from scratch" class="fade-image" />
+                </div>
+                <ul class="actions special">
+                
+                </ul>
+            </article>
+
+            <!-- Second Image -->
+            <article class="post featured">
+                <header class="major">
+                    
+                    <h2>Master Bedroom</h2>
+                </header>
+                <div id="second-image-wrapper" class="image-wrapper">
+                    <div class="image-overlay">
+                        <p class="overlay-text">Went for a modern contemporary style</p>
+                    </div>
+                    <img src="images/Render 3.png" alt="Description of second work" class="fade-image" />
+                </div>
+                <ul class="actions special">
+                  
+                </ul>
+            </article>
+        </div>
+
+        <footer id="footer">
+            <section>
+                <form method="post" action="#">
+                    <div class="fields">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Send Message" /></li>
+                    </ul>
+                </form>
+            </section>
+        </footer>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const imageWrappers = document.querySelectorAll('.image-wrapper');
+
+            imageWrappers.forEach(wrapper => {
+                const image = wrapper.querySelector('img');
+
+                // Add event listener for image click to toggle the fade effect
+                wrapper.addEventListener('click', function () {
+                    image.classList.toggle('faded'); // Toggle fade effect on image
+                    wrapper.classList.toggle('active'); // Toggle overlay visibility
+                });
+            });
+
+            // IntersectionObserver to detect when the video is visible
+            const video = document.getElementById('intro-video');S
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play(); // Play video when visible
+                    } else {
+                        video.pause(); // Pause video when not visible
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of the video is visible
+
+            observer.observe(video); // Start observing the video
+        });
+    </script>
+
+</body>
+</html>
