@@ -8,13 +8,14 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-
-a.button.icon.solid.solo.fa-arrow-up {
-    color: white !important; /* Forces the color to white */
+		a.button.icon.solid.solo.fa-arrow-up {
+    
+    background-color: rgba(0, 0, 0, 0) !important; /* Ensures the circle turns white */
+    border: 2px solid white !important; /* Ensures the border matches the white color */
+    border-radius: 50%; /* Ensures it retains its circular shape */
 }
-
  #main {
-    background: rgba(255, 255, 255, 0.4); /* Semi-transparent white */
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
     padding: 20px;
     border-radius: 10px;
 }
@@ -29,10 +30,8 @@ section.post p {
 	</style>
 
 	</head>
+	
 	<body class="is-preload">
-		<body style="background: url('images/Speaker setup.png') no-repeat center center fixed;">
-
-		
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -60,9 +59,9 @@ section.post p {
 									
 									<h1>About me<br />
 									</h1>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
+									<p>I'm Wei Kit, a Year 2 student at Republic Polytechnic that is captivated by how games work and<br />
+									bring things to life. How the game characters can move, interact with the environment and other players<br />
+									This passion grew to become my interest for game design and asset creation</p>
 								</header>
 								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
 								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
@@ -87,9 +86,33 @@ section.post p {
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+					const body = document.body;
+				
+					// Add a scroll listener
+					window.addEventListener('scroll', () => {
+						// Get the total scrollable height
+						const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+						const scrollTop = window.scrollY;
+				
+						// Calculate scroll percentage (between 0 and 1)
+						const scrollPercentage = Math.min(scrollTop / scrollHeight, 1);
+				
+						// Adjust the background color from white to black
+						const darkness = Math.floor(scrollPercentage * 255);
+						body.style.backgroundColor = `rgb(${255 - darkness}, ${255 - darkness}, ${255 - darkness})`;
+					});
+				});
+				</script>
+				<script>
 
 
-<script>
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
 
@@ -131,9 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
-
 
 
 </script>
