@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Massively by HTML5 UP</title>
+    <title>Wei Kit's portfolio</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
+        /* Common styles for both arrows */
+
         #main .post.featured .major {
             margin-top: 0;
             padding-top: 1px;
@@ -29,7 +31,7 @@
             margin-bottom: 15px;
             font-size: 5.6rem;
         }
-
+        
         #intro .actions {
             list-style: none;
             padding: 0;
@@ -38,7 +40,7 @@
             align-items: center;
             position: absolute;
             bottom: 90px;
-            width: 23%;
+            width: 33%;
         }
 
         #intro .actions li {
@@ -76,6 +78,7 @@
         #image-wrapper img,
         #second-image-wrapper img,
         #third-image-wrapper img,
+        #thirdd-image-wrapper img,
          #fourth-image-wrapper img,
          #fifth-image-wrapper img
         {
@@ -97,8 +100,10 @@
         #image-wrapper,
         #second-image-wrapper,
         #third-image-wrapper,
+        #thirdd-image-wrapper,
         #fourth-image-wrapper, 
         #fifth-image-wrapper{
+            
             position: relative;
             display: inline-block;
             cursor: pointer;
@@ -133,7 +138,6 @@
     </style>
 </head>
 <body class="is-preload">
-
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
         <!-- Intro Section -->
@@ -146,7 +150,7 @@
 
             <div class="content">
                 <h1>This is<br />Wei Kit</h1>
-                <p>My portfolio</p>
+                <p>The works and creations of a Game Design Student </p>
                 <ul class="actions">
                     <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
                 </ul>
@@ -160,7 +164,7 @@
         <nav id="nav">
             <ul class="links">
                 <li class="active"><a href="index.html">My Works</a></li>
-                <li><a href="generic.html">Generic Page</a></li>
+                <li><a href="generic.html">About me</a></li>
                 <li><a href="elements.html">Elements Reference</a></li>
             </ul>
             <ul class="icons">
@@ -190,7 +194,7 @@
             <!-- Second Image -->
             <article class="post featured">
                 <header class="major">
-                    <h2>Modern Bedroom</h2>
+                    <h2>Master Bedroom</h2>
                 </header>
                 <div id="second-image-wrapper" class="image-wrapper">
                     <div class="image-overlay">
@@ -203,19 +207,35 @@
             <!-- Third Image -->
             <article class="post featured">
                 <header class="major">
+                    <span class="date">April 12, 2023 </span>
                     <h2>First interior project</h2>
                 </header>
                 <div id="third-image-wrapper" class="image-wrapper">
                     <div class="image-overlay">
-                        <p class="overlay-text">My first attempt at interior design </p>
+                        <p class="overlay-text">First version of the project  </p>
                     </div>
-                    <img src="images/First render.png" alt="Description of third work" class="fade-image" />
+                    <img src="images/Bedroom Render 1.png" alt="Description of third work" class="fade-image" />
+                </div>
+            </article>
+
+               <!-- Third second Image -->
+               <article class="post featured">
+                <header class="major">
+                    <span class="date">November 26, 2024 </span>
+                    <h2>First interior project(Updated)</h2>
+                </header>
+                <div id="thirdd-image-wrapper" class="image-wrapper">
+                    <div class="image-overlay">
+                        <p class="overlay-text">Second version of the bedroom render, recieved feedback that the windows were too small from the previous version </p>
+                    </div>
+                    <img src="images/First render.png" alt="First Version" class="fade-image" />
                 </div>
             </article>
 
             <!-- Fourth Image -->
             <article class="post featured">
                 <header class="major">
+                    <span class="date">December 30, 2023 </span>
                     <h2>Hifi Setup</h2>
                 </header>
                 <div id="fourth-image-wrapper" class="image-wrapper">
@@ -226,9 +246,10 @@
                 </div>
             </article>
 
-                   <!-- Fourth Image -->
+                   <!-- Fifth Image -->
             <article class="post featured">
                 <header class="major">
+                    <span class="date">November 13, 2023 </span>
                     <h2>Penthouse bedroom</h2>
                 </header>
                 <div id="fifth-image-wrapper" class="image-wrapper">
@@ -238,31 +259,23 @@
                     <img src="images/penthouse.png" alt="Description of fifth work" class="fade-image" />
                 </div>
             </article>
+
+                  <!-- Fifth Image -->
+                  <article class="post featured">
+                    <header class="major">
+                        <span class="date">September 26, 2023 </span>
+                        <h2>Japanese Room </h2>
+                    </header>
+                    <div id="fifth-image-wrapper" class="image-wrapper">
+                        <div class="image-overlay">
+                            <p class="overlay-text">Made a japanese themed room with the view of Mount Fuji. This was also when I started using blender  </p>
+                        </div>
+                        <img src="images/Japanese Room Render 2.png" alt="Description of fifth work" class="fade-image" />
+                    </div>
+                </article>
         </div>
 
-        <footer id="footer">
-            <section>
-                <form method="post" action="#">
-                    <div class="fields">
-                        <div class="field">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
-                        </div>
-                        <div class="field">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" />
-                        </div>
-                        <div class="field">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <ul class="actions">
-                        <li><input type="submit" value="Send Message" /></li>
-                    </ul>
-                </form>
-            </section>
-        </footer>
+ 
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -297,6 +310,64 @@
 
             observer.observe(video);
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const scrollIcon = document.querySelector('.actions .button');
+    const scrollIconWrapper = document.querySelector('.actions');
+    const introSection = document.getElementById('intro');
+    const body = document.body;
+    const video = document.getElementById('intro-video');
+
+    // Create the "up arrow" dynamically
+    const upArrow = document.createElement('a');
+    upArrow.classList.add('button', 'icon', 'solid', 'solo', 'fa-arrow-up');
+    upArrow.style.opacity = '0'; // Start fully transparent
+    upArrow.style.visibility = 'hidden'; // Hide it initially
+    upArrow.style.transition = 'opacity 0.5s ease, visibility 0.5s ease'; // Smooth transition
+    upArrow.style.position = 'fixed';
+    upArrow.style.top = '400px';
+    upArrow.style.left = '85%';
+    upArrow.style.transform = 'translateX(-50%)';
+    upArrow.style.zIndex = '1000';
+    upArrow.href = '#header';
+    upArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.body.appendChild(upArrow);
+
+    // Detect scroll position and switch between icons
+    window.addEventListener('scroll', () => {
+        const introBottom = introSection.offsetHeight;
+        if (window.scrollY > introBottom) {
+            scrollIconWrapper.style.opacity = '0'; // Smoothly hide the downward arrow
+            scrollIconWrapper.style.visibility = 'hidden'; // Ensure it's hidden after fading
+            upArrow.style.opacity = '1'; // Smoothly show the upward arrow
+            upArrow.style.visibility = 'visible'; // Ensure it's visible after fading in
+            upArrow.classList.add('pulse-red'); // Add pulsing effect
+
+            // Pause the video when up arrow is visible
+            if (!video.paused) {
+                video.pause();
+            }
+        } else {
+            scrollIconWrapper.style.opacity = '1'; // Smoothly show the downward arrow
+            scrollIconWrapper.style.visibility = 'visible'; // Ensure it's visible after fading in
+            upArrow.style.opacity = '0'; // Smoothly hide the upward arrow
+            upArrow.style.visibility = 'hidden'; // Ensure it's hidden after fading out
+            upArrow.classList.remove('pulse-red'); // Remove pulsing effect
+
+            // Play the video when up arrow is hidden
+            if (video.paused) {
+                video.play();
+            }
+        }
+    });
+});
+
+
+
     </script>
 
 </body>
