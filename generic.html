@@ -8,6 +8,59 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
+    #image-wrapper img
+	{
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+            transition: opacity 2s ease;
+        }
+		#image-wrapper
+		{
+		position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+		.image-wrapper.active .image-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+		.image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+		.image-wrapper.active .image-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+
+        .overlay-text {
+            font-size: 1.5em;
+            text-align: center;
+            padding: 1em;
+        }
+		
+		.fade-image {
+            opacity: 1;
+        }
+
+        .fade-image.faded {
+            opacity: 0.4;
+        }
+
 		a.button.icon.solid.solo.fa-arrow-up {
     
     background-color: rgba(0, 0, 0, 0) !important; /* Ensures the circle turns white */
@@ -15,7 +68,7 @@
     border-radius: 50%; /* Ensures it retains its circular shape */
 }
  #main {
-    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+    background: rgba(221, 221, 221, 0.3); /* Semi-transparent white */
     padding: 20px;
     border-radius: 10px;
 }
@@ -61,11 +114,16 @@ section.post p {
 									</h1>
 									<p>I'm Wei Kit, a Year 2 student at Republic Polytechnic that is captivated by how games work and<br />
 									bring things to life. How the game characters can move, interact with the environment and other players<br />
-									This passion grew to become my interest for game design and asset creation</p>
-								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
+									This passion grew to become my interest for game design and 3D asset creation</p>
+								
+								<div id="image-wrapper" class="image-wrapper">
+									<div class="image-overlay">
+										<p class="overlay-text">Just like many others, my 3D journey began with a donut</p>
+									</div>
+									<img src="images/Donut render 1.png" alt="All assets modelled from scratch" class="fade-image" />
+								</div>
+								<p></p>
+								<p></p>
 							</section>
 
 					</div>
@@ -110,9 +168,6 @@ section.post p {
 
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
 
@@ -154,10 +209,38 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
 </script>
 
+<script>
+     document.addEventListener('DOMContentLoaded', function () {
+            const imageWrappers = document.querySelectorAll('.image-wrapper');
+
+            imageWrappers.forEach(wrapper => {
+                const image = wrapper.querySelector('img');
+
+                wrapper.addEventListener('click', function () {
+                    image.classList.toggle('faded');
+                    wrapper.classList.toggle('active');
+                });
+            });
+
+            const video = document.getElementById('intro-video');
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(video);
+        });
+ 
+</script>
+
+</script>
 
 			  
 	</body>
