@@ -6,10 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+
     <style>
         /* Common styles for both arrows */
 
         /*my works page */ 
+
+         /*Loading screen*/
+
+         body.loading > *:not(#loader):not(#expanding-circle-loader) {
+  visibility: hidden;
+}
+
+
+         #loader {
+  position: fixed;
+  inset: 0; /* full screen */
+  background: black;
+  z-index: 9999;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+/* This container holds the digits and places them bottom-right */
+.digit-group {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Fade mask styling */
+.digit-mask {
+  position: relative;
+  width: 40px;
+  height: 60px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+}
+
+/* Digit strip and digits */
+.digit-container {
+  width: 40px;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+.digit-strip div {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem; /* 🔁 Change this */
+  color: white;
+  line-height: 60px;
+  font-family: 'Bitcount Grid Single', monospace;
+}
+
+
+#expanding-circle-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 9980;
+  pointer-events: none;
+  opacity: 1;
+  animation: expandCircle 2s ease-out forwards;
+}
+
+@keyframes expandCircle {
+  to {
+    width: 200vmax;
+    height: 200vmax;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+
 
         #main .post.featured .major {
             margin-top: 0;
@@ -139,13 +227,15 @@
         }
     </style>
 </head>
-<body class="is-preload">
+<body class="is-preload" id="body">
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
         <!-- Intro Section -->
         <div id="intro">
             <video autoplay muted loop id="intro-video">
                 <source src="assets/videos/1236.mp4" type="video/mp4">
+                <source src="assets/videos/background.webm" type="video/webm">
+                <source src="assets/videos/V1.mp4" type="video/mp4">
                 <source src="assets/videos/background.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
@@ -158,10 +248,29 @@
                 </ul>
             </div>
         </div>
+        <!-- Loader -->
+        <body class="loading">
 
-        <header id="header">
-            <a href="index.html" class="logo">Home</a>
-        </header>
+
+        <div id="loader">
+            <div class="digit-group">
+              <div class="digit-mask">
+                <div class="digit-container" id="digit-1"></div>
+              </div>
+              <div class="digit-mask">
+                <div class="digit-container" id="digit-2"></div>
+              </div>
+              <div class="digit-mask">
+                <div class="digit-container" id="digit-3"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="expanding-circle-loader"></div>
+
+
+
+       
 
         <nav id="nav">
             <ul class="links">
@@ -281,6 +390,101 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
+    <!-- Loader script -->
+    <script>
+        const digitStrips = [];
+      
+        for (let i = 1; i <= 3; i++) {
+          const container = document.getElementById(`digit-${i}`);
+          const strip = document.createElement("div");
+          strip.className = "digit-strip";
+      
+          for (let d = 0; d <= 9; d++) {
+            const digitEl = document.createElement("div");
+            digitEl.textContent = d;
+            strip.appendChild(digitEl);
+          }
+      
+          container.appendChild(strip);
+          digitStrips.push(strip);
+        }
+      
+        let progress = 0;
+        let lastDigits = [-1, -1, -1];
+        let loadingDone = false;
+      
+        // When full page is loaded, flag it
+        window.addEventListener("load", () => {
+          loadingDone = true;
+        });
+      
+        // Animate progress up to 100 or stop early if page loads
+        const progressInterval = setInterval(() => {
+          if (loadingDone && progress >= 100) {
+            clearInterval(progressInterval);
+            const loader = document.getElementById("loader");
+            loader.style.opacity = 0;
+            loader.addEventListener("transitionend", () => loader.remove());document.body.classList.remove("loading");
+            localStorage.setItem("hasSeenLoader", "true"); // Mark loader as seen
+            return;
+          }
+      
+          if (!loadingDone && progress >= 95) {
+            // Pause at 95% if not ready
+            return;
+          }
+      
+          if (loadingDone && progress < 100) {
+            // Finish if loaded and counter hasn't caught up
+            progress += 3;
+          } else {
+            progress += Math.random() * 2; // smoothly progress
+          }
+      
+          if (progress > 100) progress = 100;
+      
+          const padded = Math.floor(progress).toString().padStart(3, '0');
+          const digits = padded.split('').map(Number);
+      
+          digits.forEach((digit, index) => {
+            if (digit !== lastDigits[index]) {
+              digitStrips[index].style.transform = `translateY(-${digit * 60}px)`;
+              lastDigits[index] = digit;
+            }
+          });
+        }, 30);
+      </script>
+      
+      <script>
+        window.addEventListener("load", () => {
+          const circle = document.getElementById("expanding-circle-loader");
+      
+          // Delay fade-out until animation is visibly done
+          setTimeout(() => {
+            circle.style.transition = "opacity 0.8s ease";
+            circle.style.opacity = "0";
+      
+            circle.addEventListener("transitionend", () => {
+              circle.remove();
+            });
+          }, 2000); // match animation duration
+        });
+      </script>
+
+
+<script>
+    // Check if the user has already seen the loader
+    const hasSeenLoader = localStorage.getItem("hasSeenLoader");
+  
+    // Apply the 'loading' class only if this is the first time
+    if (!hasSeenLoader) {
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("loading");
+      });
+    }
+  </script>
+  
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const imageWrappers = document.querySelectorAll('.image-wrapper');
@@ -363,9 +567,6 @@
     });
 });
 
-
-
-    </script>
-
+</script>
 </body>
 </html>
