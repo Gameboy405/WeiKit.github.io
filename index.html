@@ -232,14 +232,12 @@
     <div id="wrapper" class="fade-in">
         <!-- Intro Section -->
         <div id="intro">
-            <video autoplay muted loop id="intro-video">
+            <video autoplay muted id="intro-video">
                 <source src="assets/videos/1236.mp4" type="video/mp4">
-                <source src="assets/videos/background.webm" type="video/webm">
-                <source src="assets/videos/V1.mp4" type="video/mp4">
                 <source src="assets/videos/background.webm" type="video/webm">
                 Your browser does not support the video tag.
             </video>
-
+            
             <div class="content">
                 <h1>This is<br />Wei Kit</h1>
                 <p>The works and creations of a Year 2 Game Design Student </p>
@@ -389,6 +387,26 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const video = document.getElementById('intro-video');
+            const sources = [
+                "assets/videos/1236.mp4",           // First video
+                "assets/videos/V1.mp4"    // Second video (replace with actual file)
+            ];
+            let currentVideoIndex = 0;
+    
+            video.addEventListener('ended', () => {
+                // Toggle to the next video in sequence
+                currentVideoIndex = (currentVideoIndex + 1) % sources.length;
+                video.src = sources[currentVideoIndex];
+                video.load();
+                video.play();
+            });
+        });
+    </script>
+
 
     <!-- Loader script -->
     <script>
