@@ -15,9 +15,7 @@
 /* Loading Screen Styles       */
 /* ---------------------------- */
 
-body.loading > *:not(#loader):not(#expanding-circle-loader) {
-  visibility: hidden;
-}
+
 
 #loader {
   position: fixed;
@@ -28,28 +26,7 @@ body.loading > *:not(#loader):not(#expanding-circle-loader) {
   pointer-events: none;
 }
 
-#expanding-circle-loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: white;
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  z-index: 9980;
-  pointer-events: none;
-  opacity: 1;
-  animation: expandCircle 2s ease-out forwards;
-}
 
-@keyframes expandCircle {
-  to {
-    width: 200vmax;
-    height: 200vmax;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
 
 /* Digit Countdown Styling */
 
