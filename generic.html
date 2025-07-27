@@ -1,311 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>About Me</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-<html>
-	<head>
-		<title>About Me</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
-    <style>
-        /* Image Wrapper */
-#image-wrapper {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-#image-wrapper img {
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    display: block;
-    transition: opacity 2s ease;
-}
-
-/* Overlay Handling */
-.image-wrapper.active .image-overlay {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
-}
-
-/* Overlay Text */
-.overlay-text {
-    font-size: 1.5em;
-    text-align: center;
-    padding: 1em;
-}
-
-/* Fading Effect */
-.fade-image {
-    opacity: 1;
-}
-
-.fade-image.faded {
-    opacity: 0.4;
-}
-
-/* Scroll-Up Button */
-a.button.icon.solid.solo.fa-arrow-up {
-    background-color: rgba(0, 0, 0, 0) !important;
-    border: 2px solid white !important;
-    border-radius: 50%;
-}
-
-/* Main Content */
-#main {
-    background: rgba(221, 221, 221, 0.3);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-section.post h1,
-section.post p {
-    color: white;
-}
-
-/* Wrapper and Background */
-#wrapper {
-    transition: opacity 0.5s ease;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-}
-
-#wrapper > .bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #212931;
-
-    /* ✅ One background image that fully fits */
-    background-image: url("images/Speaker_setup.png");
-
-    background-size: contain;         /* Show full image */
-    background-repeat: no-repeat;     /* No tiling */
-    background-position: center top; /* Centered */
-    background-attachment: fixed;     /* Optional parallax effect */
-
-    z-index: -1;
-}
-
-
-
-#wrapper > .bg.fixed {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-}
-
-/* Fade-in effect */
-#wrapper.fade-in:before {
-    pointer-events: none;
-    transition: opacity 1s ease-in-out 0.75s;
-    background: #1e252d;
-    content: '';
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-}
-
-body.is-preload #wrapper.fade-in:before {
-    opacity: 1;
-}
-
-/* Portrait screen adjustments */
-@media screen and (orientation: portrait) {
-    #wrapper > .bg {
-        background-size:
-            auto,
-            auto,
-            auto 175%;
+  <style>
+    #image-wrapper {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
     }
-}
 
-	</style>
+    #image-wrapper img {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      display: block;
+      transition: opacity 2s ease;
+    }
 
-	</head>
-	
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+    .image-wrapper.active .image-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Back Home</a>
-					</header>
+    .image-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">My Works</a></li>
-							<li class="active"><a href="generic.html">About me</a></li>
-							<li><a href="elements.html">Experience</a></li>
-						</ul>
-					
-					</nav>
+    .overlay-text {
+      font-size: 1.5em;
+      text-align: center;
+      padding: 1em;
+    }
 
-				<!-- Main -->
-					<div id="main">
+    .fade-image { opacity: 1; }
+    .fade-image.faded { opacity: 0.4; }
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									
-									<h1>About me<br />
-									</h1>
-									<p>I'm Wei Kit, a Year 2 student at Republic Polytechnic that is captivated by how games work and<br />
-									bring things to life. How the game characters can move, interact with the environment and other players<br />
-									This passion grew to become my interest for game design and 3D asset creation</p>
-								
-								<div id="image-wrapper" class="image-wrapper">
-									<div class="image-overlay">
-										<p class="overlay-text">Just like many others, my 3D journey began with a donut</p>
-									</div>
-									<img src="images/Donut render 1.png" alt="All assets modelled from scratch" class="fade-image" />
-								</div>
-								<p>I specialize in skills such as 3D modelling and programming. I am constantly finding new ways to push the boundaries of interactive design. Outside of academics, I enjoy activities like cycling, playing indie games which help inspire and shape my creative process. </p>
-								<p></p>
-							</section>
+    a.button.icon.solid.solo.fa-arrow-up {
+      background-color: rgba(0, 0, 0, 0) !important;
+      border: 2px solid white !important;
+      border-radius: 50%;
+    }
 
-					</div>
+    #main {
+      background: rgba(221, 221, 221, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+    }
 
+    section.post h1, section.post p {
+      color: white;
+    }
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Wei kit</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+    #wrapper {
+      transition: opacity 0.5s ease;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
 
-			</div>
+    #wrapper > .bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #212931;
+      background-image: url("images/Speaker_setup.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-attachment: fixed;
+      z-index: -1;
+    }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			
-			<script>
-				document.addEventListener('DOMContentLoaded', function () {
-					const body = document.body;
-				
-					// Add a scroll listener
-					window.addEventListener('scroll', () => {
-						// Get the total scrollable height
-						const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-						const scrollTop = window.scrollY;
-				
-						// Calculate scroll percentage (between 0 and 1)
-						const scrollPercentage = Math.min(scrollTop / scrollHeight, 1);
-				
-						// Adjust the background color from white to black
-						const darkness = Math.floor(scrollPercentage * 255);
-						body.style.backgroundColor = `rgb(${255 - darkness}, ${255 - darkness}, ${255 - darkness})`;
-					});
-				});
-				</script>
-				<script>
+    #wrapper > .bg.fixed {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+    }
 
+    #wrapper.fade-in:before {
+      pointer-events: none;
+      transition: opacity 1s ease-in-out 0.75s;
+      background: #1e252d;
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0; left: 0;
+      height: 100%; width: 100%;
+      opacity: 0;
+    }
 
+    body.is-preload #wrapper.fade-in:before {
+      opacity: 1;
+    }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const body = document.body;
+    @media screen and (orientation: portrait) {
+      #wrapper > .bg {
+        background-size: auto, auto, auto 175%;
+      }
+    }
+  </style>
+</head>
 
-    // Create the "up arrow" dynamically
-    const upArrow = document.createElement('a');
-    upArrow.classList.add('button', 'icon', 'solid', 'solo', 'fa-arrow-up');
-    upArrow.style.opacity = '0'; // Start fully transparent
-    upArrow.style.visibility = 'hidden'; // Hide it initially
-    upArrow.style.transition = 'opacity 0.5s ease, visibility 0.5s ease'; // Smooth transition
-    upArrow.style.position = 'fixed';
-    upArrow.style.top = '400px'; // Adjust for vertical position
-    upArrow.style.left = '85%'; // Adjust for horizontal position
-    upArrow.style.transform = 'translateX(-50%)';
-    upArrow.style.zIndex = '1000';
-    upArrow.style.color = 'white'; // Set the arrow color to white
-    upArrow.style.backgroundColor = 'white'; // Set the circle's background to white
-    upArrow.style.borderColor = 'white'; // Set the circle's border to white
-    upArrow.style.borderWidth = '2px'; // Adjust border thickness if necessary
-    upArrow.style.fontSize = '24px'; // Adjust the size of the arrow if necessary
-    upArrow.style.textDecoration = 'none'; // Remove underline if present
-    upArrow.href = '#header';
-    upArrow.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll to top
-    });
+<body class="is-preload">
+  <!-- Wrapper -->
+  <div id="wrapper">
 
-    document.body.appendChild(upArrow);
+    <!-- Header -->
+    <header id="header">
+      <a href="index.html" class="logo">Back Home</a>
+    </header>
 
-    // Show or hide the "up arrow" based on scroll position
-    window.addEventListener('scroll', () => {
-        const scrollThreshold = 200; // Set the scroll threshold (in pixels)
+    <!-- Nav -->
+    <nav id="nav">
+      <ul class="links">
+        <li><a href="index.html">My Works</a></li>
+        <li class="active"><a href="generic.html">About me</a></li>
+        <li><a href="elements.html">Experience</a></li>
+      </ul>
+    </nav>
 
-        if (window.scrollY > scrollThreshold) {
-            upArrow.style.opacity = '1'; // Smoothly show the arrow
-            upArrow.style.visibility = 'visible'; // Ensure it's visible
-        } else {
-            upArrow.style.opacity = '0'; // Smoothly hide the arrow
-            upArrow.style.visibility = 'hidden'; // Ensure it's hidden
-        }
-    });
-});
-</script>
+    <!-- Main -->
+    <div id="main">
+      <!-- Post -->
+      <section class="post">
+        <header class="major">
+          <h1>About me</h1>
+          <p>I'm Wei Kit, a Year 2 student at Republic Polytechnic captivated by how games work and bring things to life. Game characters moving, interacting with environments and players — this fascination became a passion for game design and 3D asset creation.</p>
+        </header>
 
-<script>
-     document.addEventListener('DOMContentLoaded', function () {
-            const imageWrappers = document.querySelectorAll('.image-wrapper');
+        <div id="image-wrapper" class="image-wrapper">
+          <div class="image-overlay">
+            <p class="overlay-text">Just like many others, my 3D journey began with a donut</p>
+          </div>
+          <img src="images/Donut render 1.png" alt="All assets modelled from scratch" class="fade-image" loading="lazy" />
+        </div>
 
-            imageWrappers.forEach(wrapper => {
-                const image = wrapper.querySelector('img');
+        <p>I specialize in skills such as 3D modelling and programming. I’m constantly finding new ways to push the boundaries of interactive design. Outside of academics, I enjoy cycling and indie games which shape my creative process.</p>
+      </section>
+    </div>
 
-                wrapper.addEventListener('click', function () {
-                    image.classList.toggle('faded');
-                    wrapper.classList.toggle('active');
-                });
-            });
+    <!-- Copyright -->
+    <div id="copyright">
+      <ul><li>&copy; Wei Kit</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+    </div>
+  </div>
 
-            const video = document.getElementById('intro-video');
-            const observer = new IntersectionObserver(function (entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-            }, { threshold: 0.5 });
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js" defer></script>
+  <script src="assets/js/jquery.scrollex.min.js" defer></script>
+  <script src="assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="assets/js/browser.min.js" defer></script>
+  <script src="assets/js/breakpoints.min.js" defer></script>
+  <script src="assets/js/util.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 
-            observer.observe(video);
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+
+      // Background fade based on scroll
+      window.addEventListener('scroll', () => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollTop = window.scrollY;
+        const scrollPercentage = Math.min(scrollTop / scrollHeight, 1);
+        const darkness = Math.floor(scrollPercentage * 255);
+        body.style.backgroundColor = `rgb(${255 - darkness}, ${255 - darkness}, ${255 - darkness})`;
+      });
+
+      // Image fade toggle
+      document.querySelectorAll('.image-wrapper').forEach(wrapper => {
+        const image = wrapper.querySelector('img');
+        wrapper.addEventListener('click', () => {
+          image.classList.toggle('faded');
+          wrapper.classList.toggle('active');
         });
- 
-</script>
+      });
 
-</script>
+      // Scroll to top button
+      const upArrow = document.createElement('a');
+      upArrow.classList.add('button', 'icon', 'solid', 'solo', 'fa-arrow-up');
+      Object.assign(upArrow.style, {
+        opacity: '0',
+        visibility: 'hidden',
+        transition: 'opacity 0.5s ease, visibility 0.5s ease',
+        position: 'fixed',
+        top: '400px',
+        left: '85%',
+        transform: 'translateX(-50%)',
+        zIndex: '1000',
+        color: 'white',
+        backgroundColor: 'white',
+        borderColor: 'white',
+        borderWidth: '2px',
+        fontSize: '24px',
+        textDecoration: 'none'
+      });
+      upArrow.href = '#header';
+      upArrow.addEventListener('click', e => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      document.body.appendChild(upArrow);
 
-			  
-	</body>
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+          upArrow.style.opacity = '1';
+          upArrow.style.visibility = 'visible';
+        } else {
+          upArrow.style.opacity = '0';
+          upArrow.style.visibility = 'hidden';
+        }
+      });
+    });
+  </script>
+</body>
 </html>

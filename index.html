@@ -10,75 +10,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
 
-    <style>
-        /* Common styles for both arrows */
+<style>
+/* ---------------------------- */
+/* Loading Screen Styles       */
+/* ---------------------------- */
 
-        /*my works page */ 
-
-         /*Loading screen*/
-
-         body.loading > *:not(#loader):not(#expanding-circle-loader) {
+body.loading > *:not(#loader):not(#expanding-circle-loader) {
   visibility: hidden;
 }
 
-
-         #loader {
+#loader {
   position: fixed;
-  inset: 0; /* full screen */
+  inset: 0;
   background: black;
   z-index: 9999;
   transition: opacity 1s ease;
   pointer-events: none;
 }
 
-/* This container holds the digits and places them bottom-right */
-.digit-group {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  gap: 10px;
-}
-
-/* Fade mask styling */
-.digit-mask {
-  position: relative;
-  width: 40px;
-  height: 60px;
-  overflow: hidden;
-  mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
-}
-
-/* Digit strip and digits */
-.digit-container {
-  width: 40px;
-  height: 60px;
-  overflow: hidden;
-  position: relative;
-}
-
-
-
-.digit-strip div {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem; /* 🔁 Change this */
-  color: white;
-  line-height: 60px;
-  font-family: 'Bitcount Grid Single', monospace;
-}
-
-
 #expanding-circle-loader {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   background: white;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
@@ -96,136 +51,185 @@
   }
 }
 
+/* Digit Countdown Styling */
 
+.digit-group {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
 
+.digit-mask {
+  position: relative;
+  width: 40px;
+  height: 60px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+}
 
-        #main .post.featured .major {
-            margin-top: 0;
-            padding-top: 1px;
-        }
+.digit-container {
+  width: 40px;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+}
 
-        #main .post.featured .major .date {
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
+.digit-strip div {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: white;
+  line-height: 60px;
+  font-family: 'Bitcount Grid Single', monospace;
+}
 
-        #main .post.featured .major .subtitle {
-            margin-top: 5px;
-            font-size: 1.2rem;
-            color: #666;
-            font-style: italic;
-        }
+/* ---------------------------- */
+/* Intro Section Styles        */
+/* ---------------------------- */
 
-        #main .post.featured .major h2 {
-            margin-top: 60px;
-            margin-bottom: 15px;
-            font-size: 5.6rem;
-        }
-        
-        #intro .actions {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            bottom: 90px;
-            width: 900%;
-        }
+#intro {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
 
-        #intro .actions li {
-            display: inline-block;
-            margin: 0;
-        }
+#intro-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
 
-        #intro {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
+#intro .content {
+  z-index: 1;
+  max-width: 800px;
+  padding: 2em;
+}
 
-        #intro-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
+#intro .actions {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 90px;
+  width: 900%;
+}
 
-        #intro .content {
-            z-index: 1;
-            max-width: 800px;
-            padding: 2em;
-        }
+#intro .actions li {
+  display: inline-block;
+  margin: 0;
+}
 
-        #image-wrapper img,
-        #second-image-wrapper img,
-        #third-image-wrapper img,
-        #thirdd-image-wrapper img,
-         #fourth-image-wrapper img,
-         #fifth-image-wrapper img
-        {
-            width: 100%;
-            max-width: 1200px;
-            height: auto;
-            display: block;
-            transition: opacity 2s ease;
-        }
+/* ---------------------------- */
+/* Featured Post Styles        */
+/* ---------------------------- */
 
-        .fade-image {
-            opacity: 1;
-        }
+#main .post.featured .major {
+  margin-top: 0;
+  padding-top: 1px;
+}
 
-        .fade-image.faded {
-            opacity: 0.2;
-        }
+#main .post.featured .major .date {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
 
-        #image-wrapper,
-        #second-image-wrapper,
-        #third-image-wrapper,
-        #thirdd-image-wrapper,
-        #fourth-image-wrapper, 
-        #fifth-image-wrapper{
-            
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
+#main .post.featured .major .subtitle {
+  margin-top: 5px;
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+}
 
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease-in-out;
-        }
+#main .post.featured .major h2 {
+  margin-top: 60px;
+  margin-bottom: 15px;
+  font-size: 5.6rem;
+}
 
-        .image-wrapper.active .image-overlay {
-            opacity: 1;
-            pointer-events: auto;
-        }
+/* ---------------------------- */
+/* Image Wrapper & Fade Effect */
+/* ---------------------------- */
 
-        .overlay-text {
-            font-size: 1.5em;
-            text-align: center;
-            padding: 1em;
-        }
-    </style>
+#image-wrapper img,
+#second-image-wrapper img,
+#third-image-wrapper img,
+#thirdd-image-wrapper img,
+#fourth-image-wrapper img,
+#fifth-image-wrapper img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  transition: opacity 2s ease;
+}
+
+.fade-image {
+  opacity: 1;
+}
+
+.fade-image.faded {
+  opacity: 0.2;
+}
+
+#image-wrapper,
+#second-image-wrapper,
+#third-image-wrapper,
+#thirdd-image-wrapper,
+#fourth-image-wrapper,
+#fifth-image-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Overlay Styles */
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-wrapper.active .image-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-text {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 1em;
+}
+
+</style>
+
 </head>
 <body class="is-preload" id="body">
     <!-- Wrapper -->
@@ -353,7 +357,7 @@
                     <div class="image-overlay">
                         <p class="overlay-text">I have an interest in speakers and hi-fi systems, hence I made this speaker room</p>
                     </div>
-                    <img src="images/Speaker setup.png" alt="Description of fourth work" class="fade-image" />
+                    <img src="images/Speaker_setup.png" alt="Description of fourth work" class="fade-image" />
                 </div>
             </article>
 
