@@ -8,143 +8,142 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-        /*About me*/
-    #image-wrapper img
-	{
-            width: 100%;
-            max-width: 1200px;
-            height: auto;
-            display: block;
-            transition: opacity 2s ease;
-        }
-		#image-wrapper
-		{
-		position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-		.image-wrapper.active .image-overlay {
-            opacity: 1;
-            pointer-events: auto;
-        }
-		.image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease-in-out;
-        }
-		.image-wrapper.active .image-overlay {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-
-        .overlay-text {
-            font-size: 1.5em;
-            text-align: center;
-            padding: 1em;
-        }
-		
-		.fade-image {
-            opacity: 1;
-        }
-
-        .fade-image.faded {
-            opacity: 0.4;
-        }
-
-		a.button.icon.solid.solo.fa-arrow-up {
-    
-    background-color: rgba(0, 0, 0, 0) !important; /* Ensures the circle turns white */
-    border: 2px solid white !important; /* Ensures the border matches the white color */
-    border-radius: 50%; /* Ensures it retains its circular shape */
+        /* Image Wrapper */
+#image-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
- #main {
-    background: rgba(221, 221, 221, 0.3); /* Semi-transparent white */
+
+#image-wrapper img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: block;
+    transition: opacity 2s ease;
+}
+
+/* Overlay Handling */
+.image-wrapper.active .image-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Overlay Text */
+.overlay-text {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 1em;
+}
+
+/* Fading Effect */
+.fade-image {
+    opacity: 1;
+}
+
+.fade-image.faded {
+    opacity: 0.4;
+}
+
+/* Scroll-Up Button */
+a.button.icon.solid.solo.fa-arrow-up {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 2px solid white !important;
+    border-radius: 50%;
+}
+
+/* Main Content */
+#main {
+    background: rgba(221, 221, 221, 0.3);
     padding: 20px;
     border-radius: 10px;
 }
 
-section.post h1 {
-    color: white;
-}
-
+section.post h1,
 section.post p {
     color: white;
 }
 
-	#wrapper {
-		-moz-transition: opacity 0.5s ease;
-		-webkit-transition: opacity 0.5s ease;
-		-ms-transition: opacity 0.5s ease;
-		transition: opacity 0.5s ease;
-		position: relative;
-		z-index: 1;
-		overflow: hidden;
-	}
+/* Wrapper and Background */
+#wrapper {
+    transition: opacity 0.5s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
 
-		#wrapper > .bg {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-color: #212931;
-			background-image: url("../../images/Speaker setu.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/Speaker_setup.png");
-			background-size: auto,								auto,														100% auto;
-			background-position: center,								center,														top center;
-			background-repeat: repeat,								no-repeat,													no-repeat;
-			background-attachment: fixed,								fixed,														fixed;
-			z-index: -1;
-		}
+#wrapper > .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #212931;
 
-			#wrapper > .bg.fixed {
-				position: fixed;
-				width: 100vw;
-				height: 100vh;
-			}
+    /* ✅ One background image that fully fits */
+    background-image: url("/images/speaker_setup.png");
 
-		#wrapper.fade-in:before {
-			pointer-events: none;
-			-moz-transition: opacity 1s ease-in-out;
-			-webkit-transition: opacity 1s ease-in-out;
-			-ms-transition: opacity 1s ease-in-out;
-			transition: opacity 1s ease-in-out;
-			-moz-transition-delay: 0.75s;
-			-webkit-transition-delay: 0.75s;
-			-ms-transition-delay: 0.75s;
-			transition-delay: 0.75s;
-			background: #1e252d;
-			content: '';
-			display: block;
-			height: 100%;
-			left: 0;
-			opacity: 0;
-			position: fixed;
-			top: 0;
-			width: 100%;
-		}
+    background-size: contain;         /* Show full image */
+    background-repeat: no-repeat;     /* No tiling */
+    background-position: center top; /* Centered */
+    background-attachment: fixed;     /* Optional parallax effect */
 
-		body.is-preload #wrapper.fade-in:before {
-			opacity: 1;
-		}
+    z-index: -1;
+}
 
-		@media screen and (orientation: portrait) {
 
-			#wrapper > .bg {
-				background-size: auto,								auto,														auto 175%;
-			}
 
-		}
+#wrapper > .bg.fixed {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Fade-in effect */
+#wrapper.fade-in:before {
+    pointer-events: none;
+    transition: opacity 1s ease-in-out 0.75s;
+    background: #1e252d;
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+body.is-preload #wrapper.fade-in:before {
+    opacity: 1;
+}
+
+/* Portrait screen adjustments */
+@media screen and (orientation: portrait) {
+    #wrapper > .bg {
+        background-size:
+            auto,
+            auto,
+            auto 175%;
+    }
+}
+
 	</style>
 
 	</head>
