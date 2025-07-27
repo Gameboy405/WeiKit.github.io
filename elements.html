@@ -21,7 +21,9 @@
 }
 
 	/* Image toggle effect */
-.image-wrapper img {
+/* For images */
+.image-wrapper img,
+.image-wrapper video {
     width: 100%;
     max-width: 1200px;
     height: auto;
@@ -29,13 +31,16 @@
     transition: opacity 2s ease;
 }
 
-.fade-image {
+/* Fade effect */
+.fade-image,
+.fade-video {
     opacity: 1;
 }
-
-.fade-image.faded {
-    opacity: 0.2;
+.fade-image.faded,
+.fade-video.faded {
+    opacity: 0.3;
 }
+
 
 .image-wrapper {
     position: relative;
@@ -66,7 +71,7 @@
     font-size: 1.5em;
     text-align: center;
     padding: 1em;
-    color: rgb(255, 255, 255); 
+    color: rgb(0, 0, 0); 
 }
 
 
@@ -179,17 +184,37 @@ section.post > header.major:first-of-type h1 {
 								
                     <span class="date">March 10th 2025</span>
                     <div class="subtitle">Click the image to find out more</div>
-                    <h2> Working at Go!mama </h2>
+                    <h2> Experience at Go!mama </h2>
 					
+					<!-- First image video -->
                 </header>
-                <div id="image-wrapper" class="image-wrapper">
-                    <div class="image-overlay">
-                        <p class="overlay-text">First attempt at making a bedroom with assets made from scratch</p>
-                    </div>
-                    <img src="images/Render 2.png" alt="All assets modelled from scratch" class="fade-image" />
-                </div>
-							</section>
-					</div>
+               <div class="image-wrapper" data-type="video">
+    <div class="image-overlay">
+        <p class="overlay-text">Made all 7 models from scratch for the project in the background</p>
+    </div>
+    <video class="fade-video" autoplay muted playsinline loop preload="metadata">
+        <source src="assets/videos/allpods.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+       <!-- Second image -->
+                <header class="major">
+					<span>  
+
+				 -
+					</span>
+                    <span class="date">March 19th 2025 </span>
+                    <h2>Pod Cleaning</h2>
+                </header>
+               <div class="image-wrapper" data-type="image">
+    <div class="image-overlay">
+        <p class="overlay-text">Part of the job was cleaning pods. We would go to sentosa and maintain the pods by cleaning them. This is to check the cleanliness of the pods were up to standard for mothers.</p>
+    </div>
+    <img src="images/clean.png" alt="Image example" class="fade-image" />
+</div>
+            
+
 					
 
 			
@@ -204,21 +229,39 @@ section.post > header.major:first-of-type h1 {
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const imageWrappers = document.querySelectorAll('.image-wrapper');
 
     imageWrappers.forEach(wrapper => {
-        const image = wrapper.querySelector('img');
+        const type = wrapper.getAttribute('data-type');
+
+        let media;
+        if (type === 'image') {
+            media = wrapper.querySelector('img');
+        } else if (type === 'video') {
+            media = wrapper.querySelector('video');
+        }
 
         wrapper.addEventListener('click', function () {
-            image.classList.toggle('faded');
+            if (!media) return;
+
+            media.classList.toggle('faded');
             wrapper.classList.toggle('active');
+
+            // Optional: Toggle video play/pause on click
+            if (type === 'video') {
+                if (media.paused) {
+                    media.play();
+                } else {
+                    media.pause();
+                }
+            }
         });
     });
 });
-
 </script>
+
 
 	</body>
 </html>
