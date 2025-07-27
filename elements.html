@@ -434,15 +434,28 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script>
+    const circle = document.getElementById("expanding-circle-loader");
+
+    // Trigger the animation immediately once DOM is ready
+    document.addEventListener("DOMContentLoaded", () => {
+        circle.style.animationPlayState = "running";
+    });
+
+    // Wait for full page load to hide both loaders together
     window.addEventListener("load", () => {
-        const circle = document.getElementById("expanding-circle-loader");
-        setTimeout(() => {
-            circle.style.transition = "opacity 0.8s ease";
-            circle.style.opacity = "0";
-            circle.addEventListener("transitionend", () => circle.remove());
-        }, 2000);
+        const loader = document.getElementById("loader");
+        loader.style.opacity = 0;
+        circle.style.transition = "opacity 0.8s ease";
+        circle.style.opacity = "0";
+
+        loader.addEventListener("transitionend", () => loader.remove());
+        circle.addEventListener("transitionend", () => circle.remove());
+
+        document.body.classList.remove("loading");
+        localStorage.setItem("hasSeenLoader", "true");
     });
 </script>
+
 
 <script>
     const hasSeenLoader = localStorage.getItem("hasSeenLoader");
