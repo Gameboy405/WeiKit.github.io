@@ -250,19 +250,26 @@
         <body class="loading">
 
 
-        <div id="loader">
-            <div class="digit-group">
-              <div class="digit-mask">
-                <div class="digit-container" id="digit-1"></div>
-              </div>
-              <div class="digit-mask">
-                <div class="digit-container" id="digit-2"></div>
-              </div>
-              <div class="digit-mask">
-                <div class="digit-container" id="digit-3"></div>
-              </div>
-            </div>
-          </div>
+       <div id="loader">
+  <video autoplay muted loop playsinline id="loader-video">
+    <source src="assets/videos/Loading.mp4" type="video/mp4" />
+    <source src="assets/videos/loading-video.webm" type="video/webm" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="digit-group">
+    <div class="digit-mask">
+      <div class="digit-container" id="digit-1"></div>
+    </div>
+    <div class="digit-mask">
+      <div class="digit-container" id="digit-2"></div>
+    </div>
+    <div class="digit-mask">
+      <div class="digit-container" id="digit-3"></div>
+    </div>
+  </div>
+</div>
+
           
           <div id="expanding-circle-loader"></div>
 
