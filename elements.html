@@ -6,8 +6,84 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
 
 <style>
+
+	body.loading > *:not(#loader):not(#expanding-circle-loader) {
+    visibility: hidden;
+}
+
+#loader {
+    position: fixed;
+    inset: 0;
+    background: black;
+    z-index: 9999;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+.digit-group {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.digit-mask {
+    position: relative;
+    width: 40px;
+    height: 60px;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+}
+
+.digit-container {
+    width: 40px;
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+.digit-strip div {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: black;
+    line-height: 60px;
+    font-family: 'Bitcount Grid Single', monospace;
+}
+
+#expanding-circle-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    background: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 9980;
+    pointer-events: none;
+    opacity: 1;
+    animation: expandCircle 2s ease-out forwards;
+}
+
+@keyframes expandCircle {
+    to {
+        width: 200vmax;
+        height: 200vmax;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
 
 #background-video {
     position: fixed;
@@ -146,6 +222,30 @@ section.post > header.major:first-of-type h1 {
 </style>
 
 	</head>
+
+<body class="is-preload loading">
+    <!-- Loader -->
+    <div id="loader">
+        <video autoplay muted loop playsinline id="loader-video">
+            <source src="assets/videos/Whiteloading.mp4" type="video/mp4" />
+            <source src="assets/videos/loading-video.webm" type="video/webm" />
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="digit-group">
+            <div class="digit-mask">
+                <div class="digit-container" id="digit-1"></div>
+            </div>
+            <div class="digit-mask">
+                <div class="digit-container" id="digit-2"></div>
+            </div>
+            <div class="digit-mask">
+                <div class="digit-container" id="digit-3"></div>
+            </div>
+        </div>
+    </div>
+    <div id="expanding-circle-loader"></div>
+
 	<body class="is-preload">
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -209,10 +309,28 @@ section.post > header.major:first-of-type h1 {
                 </header>
                <div class="image-wrapper" data-type="image">
     <div class="image-overlay">
-        <p class="overlay-text">Part of the job was cleaning pods. We would go to sentosa and maintain the pods by cleaning them. This is to check the cleanliness of the pods were up to standard for mothers.</p>
+        <p class="overlay-text">Part of the job was cleaning pods. We would go to sentosa and maintain the pods by cleaning them. This is to check if the cleaniness of the pods were up to standards for the mothers.</p>
     </div>
     <img src="images/clean.png" alt="Image example" class="fade-image" />
 </div>
+
+        <article class="post featured">
+                      <!-- Third image -->
+                <header class="major">
+					<span>  
+
+				 -
+					</span>
+                    <span class="date">March 19th 2025 </span>
+                    <h2>FFL event</h2>
+                </header>
+               <div class="image-wrapper" data-type="image">
+    <div class="image-overlay">
+        <p class="overlay-text">My first event experience. Was rough, but it allowed me to experience in first person how events worked and how people sell.</p>
+    </div>
+    <img src="images/booth.png" alt="Image example" class="fade-image" />
+</div>
+            </article>
             
 
 					
@@ -261,6 +379,80 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+<script>
+    const digitStrips = [];
+
+    for (let i = 1; i <= 3; i++) {
+        const container = document.getElementById(`digit-${i}`);
+        const strip = document.createElement("div");
+        strip.className = "digit-strip";
+
+        for (let d = 0; d <= 9; d++) {
+            const digitEl = document.createElement("div");
+            digitEl.textContent = d;
+            strip.appendChild(digitEl);
+        }
+
+        container.appendChild(strip);
+        digitStrips.push(strip);
+    }
+
+    let progress = 0;
+    let lastDigits = [-1, -1, -1];
+    let loadingDone = false;
+
+    window.addEventListener("load", () => {
+        loadingDone = true;
+    });
+
+    const progressInterval = setInterval(() => {
+        if (loadingDone && progress >= 100) {
+            clearInterval(progressInterval);
+            const loader = document.getElementById("loader");
+            loader.style.opacity = 0;
+            loader.addEventListener("transitionend", () => loader.remove());
+            document.body.classList.remove("loading");
+            localStorage.setItem("hasSeenLoader", "true");
+            return;
+        }
+
+        if (!loadingDone && progress >= 95) return;
+
+        progress += loadingDone ? 3 : Math.random() * 2;
+        if (progress > 100) progress = 100;
+
+        const padded = Math.floor(progress).toString().padStart(3, '0');
+        const digits = padded.split('').map(Number);
+
+        digits.forEach((digit, index) => {
+            if (digit !== lastDigits[index]) {
+                digitStrips[index].style.transform = `translateY(-${digit * 60}px)`;
+                lastDigits[index] = digit;
+            }
+        });
+    }, 30);
+</script>
+
+<script>
+    window.addEventListener("load", () => {
+        const circle = document.getElementById("expanding-circle-loader");
+        setTimeout(() => {
+            circle.style.transition = "opacity 0.8s ease";
+            circle.style.opacity = "0";
+            circle.addEventListener("transitionend", () => circle.remove());
+        }, 2000);
+    });
+</script>
+
+<script>
+    const hasSeenLoader = localStorage.getItem("hasSeenLoader");
+    if (!hasSeenLoader) {
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add("loading");
+        });
+    }
+</script>
+
 
 
 	</body>
