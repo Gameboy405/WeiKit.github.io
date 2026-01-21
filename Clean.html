@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- Fourth tab page (empty template) -->
+<html>
+  <head>
+    <title>FYP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+    <!-- Optional font (kept from your Experience page) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+      /* --- Loader video --- */
+      #loader video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      body.loading > *:not(#loader):not(#expanding-circle-loader) {
+        visibility: hidden;
+      }
+
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: black;
+        z-index: 9999;
+        transition: opacity 1s ease;
+        pointer-events: none;
+      }
+
+      .digit-group {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .digit-mask {
+        position: relative;
+        width: 40px;
+        height: 60px;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, white 30%, white 70%, transparent 100%);
+      }
+
+      .digit-container {
+        width: 40px;
+        height: 60px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .digit-strip div {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: black;
+        line-height: 60px;
+        font-family: 'Bitcount Grid Single', monospace;
+      }
+
+      /* --- Background video --- */
+      #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* --- Main readability styling (kept consistent) --- */
+      #main {
+        background: rgba(221, 221, 221, 0.3);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      section.post h1,
+      section.post p {
+        color: rgb(255, 255, 255);
+      }
+
+      .subtitle,
+      h2,
+      .date {
+        color: #ffffff;
+      }
+
+      header.major .date,
+      header.major .subtitle,
+      header.major h2 {
+        margin: 0.25em 0;
+      }
+
+      section.post > header.major:first-of-type h1 {
+        font-size: 6em !important;
+        line-height: 1.2;
+      }
+    </style>
+  </head>
+
+  <body class="is-preload loading">
+    <!-- Loader -->
+    <div id="loader">
+      <video autoplay muted loop playsinline id="loader-video">
+        <source src="assets/videos/Whiteloading.mp4" type="video/mp4" />
+        <source src="assets/videos/loading-video.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="digit-group">
+        <div class="digit-mask"><div class="digit-container" id="digit-1"></div></div>
+        <div class="digit-mask"><div class="digit-container" id="digit-2"></div></div>
+        <div class="digit-mask"><div class="digit-container" id="digit-3"></div></div>
+      </div>
+    </div>
+
+    <div id="expanding-circle-loader"></div>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Background video -->
+      <video autoplay muted loop id="background-video">
+        <source src="assets/videos/Gomamascreensaver.mp4" type="video/mp4" />
+        <source src="assets/videos/background.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html" class="logo">Back Home</a>
+      </header>
+
+      <!-- Nav (IMPORTANT: this is where the 4th tab lives) -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="index.html">My Works</a></li>
+          <li><a href="generic.html">About Me</a></li>
+          <li><a href="elements.html">Experience</a></li>
+          <li class="active"><a href="tab4.html">FYP</a></li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <section class="post">
+          <header class="major">
+            <h1>FYP</h1>
+            <div class="subtitle">A once in a lifetime experience</div>
+          </header>
+
+          <!-- Your content starts here -->
+          <p>
+            Replace this paragraph with whatever you want (text, images, videos, sections, etc.).
+          </p>
+          <!-- Your content ends here -->
+        </section>
+      </div>
+    </div>
+
+    <!-- Scripts (template scripts) -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Loader digits script -->
+    <script>
+      const digitStrips = [];
+
+      for (let i = 1; i <= 3; i++) {
+        const container = document.getElementById(`digit-${i}`);
+        const strip = document.createElement("div");
+        strip.className = "digit-strip";
+
+        for (let d = 0; d <= 9; d++) {
+          const digitEl = document.createElement("div");
+          digitEl.textContent = d;
+          strip.appendChild(digitEl);
+        }
+
+        container.appendChild(strip);
+        digitStrips.push(strip);
+      }
+
+      let progress = 0;
+      let lastDigits = [-1, -1, -1];
+      let loadingDone = false;
+
+      window.addEventListener("load", () => {
+        loadingDone = true;
+      });
+
+      const progressInterval = setInterval(() => {
+        if (loadingDone && progress >= 100) {
+          clearInterval(progressInterval);
+          const loader = document.getElementById("loader");
+          loader.style.opacity = 0;
+          loader.addEventListener("transitionend", () => loader.remove());
+          document.body.classList.remove("loading");
+          localStorage.setItem("hasSeenLoader", "true");
+          return;
+        }
+
+        if (!loadingDone && progress >= 95) return;
+
+        progress += loadingDone ? 3 : Math.random() * 2;
+        if (progress > 100) progress = 100;
+
+        const padded = Math.floor(progress).toString().padStart(3, "0");
+        const digits = padded.split("").map(Number);
+
+        digits.forEach((digit, index) => {
+          if (digit !== lastDigits[index]) {
+            digitStrips[index].style.transform = `translateY(-${digit * 60}px)`;
+            lastDigits[index] = digit;
+          }
+        });
+      }, 30);
+    </script>
+
+    <!-- Expanding circle fade (optional, kept from your page) -->
+    <script>
+      window.addEventListener("load", () => {
+        const circle = document.getElementById("expanding-circle-loader");
+        setTimeout(() => {
+          circle.style.transition = "opacity 0.8s ease";
+          circle.style.opacity = "0";
+          circle.addEventListener("transitionend", () => circle.remove());
+        }, 2000);
+      });
+    </script>
+
+    <!-- Show loader only once -->
+    <script>
+      const hasSeenLoader = localStorage.getItem("hasSeenLoader");
+      if (!hasSeenLoader) {
+        document.addEventListener("DOMContentLoaded", function () {
+          document.body.classList.add("loading");
+        });
+      } else {
+        document.body.classList.remove("loading");
+        const loader = document.getElementById("loader");
+        if (loader) loader.remove();
+      }
+    </script>
+  </body>
+</html>
