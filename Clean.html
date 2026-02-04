@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-    <!-- Optional font (kept from your Experience page) -->
+    <!-- Optional font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
 
     <style>
-      /* --- Loader video --- */
       #loader video {
         position: absolute;
         top: 0;
@@ -73,7 +72,6 @@
         font-family: 'Bitcount Grid Single', monospace;
       }
 
-      /* --- Background video --- */
       #background-video {
         position: fixed;
         top: 0;
@@ -85,7 +83,6 @@
         pointer-events: none;
       }
 
-      /* --- Main readability styling (kept consistent) --- */
       #main {
         background: rgba(221, 221, 221, 0.3);
         padding: 20px;
@@ -117,6 +114,7 @@
   </head>
 
   <body class="is-preload loading">
+
     <!-- Loader -->
     <div id="loader">
       <video autoplay muted loop playsinline id="loader-video">
@@ -136,9 +134,10 @@
 
     <!-- Wrapper -->
     <div id="wrapper">
+
       <!-- Background video -->
-      <video autoplay muted loop id="background-video">
-        <source src="assets/videos/Gomamascreensavr.mp4" type="video/mp4" />
+      <video autoplay muted loop playsinline id="background-video">
+        <source src="assets/videos/fypscreensaver.mp4" type="video/mp4" />
         <source src="assets/videos/background.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
@@ -148,7 +147,7 @@
         <a href="index.html" class="logo">Back Home</a>
       </header>
 
-      <!-- Nav (IMPORTANT: this is where the 4th tab lives) -->
+      <!-- Nav -->
       <nav id="nav">
         <ul class="links">
           <li><a href="index.html">My Works</a></li>
@@ -163,19 +162,17 @@
         <section class="post">
           <header class="major">
             <h1>FYP</h1>
-            <div class="subtitle">A once in a lifetime experience</div>
+            <div class="subtitle">Here are my contributions</div>
           </header>
 
-          <!-- Your content starts here -->
           <p>
             Replace this paragraph with whatever you want (text, images, videos, sections, etc.).
           </p>
-          <!-- Your content ends here -->
         </section>
       </div>
     </div>
 
-    <!-- Scripts (template scripts) -->
+    <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -184,7 +181,6 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- Loader digits script -->
     <script>
       const digitStrips = [];
 
@@ -232,14 +228,14 @@
 
         digits.forEach((digit, index) => {
           if (digit !== lastDigits[index]) {
-            digitStrips[index].style.transform = `translateY(-${digit * 60}px)`;
+            digitStrips[index].style.transform =
+              `translateY(-${digit * 60}px)`;
             lastDigits[index] = digit;
           }
         });
       }, 30);
     </script>
 
-    <!-- Expanding circle fade (optional, kept from your page) -->
     <script>
       window.addEventListener("load", () => {
         const circle = document.getElementById("expanding-circle-loader");
@@ -251,7 +247,6 @@
       });
     </script>
 
-    <!-- Show loader only once -->
     <script>
       const hasSeenLoader = localStorage.getItem("hasSeenLoader");
       if (!hasSeenLoader) {
@@ -264,5 +259,6 @@
         if (loader) loader.remove();
       }
     </script>
+
   </body>
 </html>
